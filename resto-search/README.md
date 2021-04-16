@@ -1,4 +1,4 @@
-# resto-search
+# resto-search app
 
 ## Project setup
 ```
