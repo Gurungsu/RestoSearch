@@ -1,20 +1,31 @@
 <template>
-
-
-
-
-  <div id="app">
- 
-    <button v-if="userLoggedIn()" @click="doLogout">SignOut</button>
-    <router-view></router-view>
+  <v-app>  
+<div id="app">
+  <v-app>
+    <v-content>
+      <v-container> 
+        <v-app-bar app color="#6495ED" height=90px>
+          <v-toolbar-title>Personal Budget </v-toolbar-title>
+          <v-spacer></v-spacer>
+          <v-btn v-if="userLoggedIn()" @click="doLogout" color=red>LogOut </v-btn>
+          <v-btn v-else-if="doLogout" @click="userLoggedIn()" color=green >SignUp Below</v-btn>
+        </v-app-bar>
+      </v-container>
+      <router-view></router-view>
+    </v-content>
+  </v-app>
+</div>
+   
+    <v-tab> 
+    <v-btn v-if="userLoggedIn()" @click="doLogout">SignOut</v-btn>
+  </v-tab>
     
-  </div>
+  </v-app>
 </template>
 
 <script lang="ts">
+
 import { Component, Vue } from "vue-property-decorator";
-import Friends from "./components/Nav.vue";
-import Nav from "./components/Nav.vue";
 import AppLogin from "./components/AppLogin.vue";
 import { FirebaseFirestore } from "@firebase/firestore-types";
 import { FirebaseAuth } from "@firebase/auth-types";
@@ -22,15 +33,14 @@ import { FirebaseAuth } from "@firebase/auth-types";
 
 @Component({
   components: {
-    Friends,
-    Nav,
+  
     AppLogin,
   },
 })
 export default class App extends Vue {
   readonly $appDB!: FirebaseFirestore;
   readonly $appAuth!: FirebaseAuth;
-readonly $router:any;
+
   // This function is automatically called when
   // the App component is added to the DOM tree
   mounted(): void {
@@ -51,7 +61,7 @@ button{
   margin: 10px;
   margin-left: 30px;
 }
-#app {
+.app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -62,5 +72,13 @@ button{
   display: grid;
   grid-template-columns: 2fr 3fr;
   grid-template-areas: "input summary" "donut expenses";
+}
+.v-container{
+  padding: auto;
+
+}
+
+#app color{
+  color: red;
 }
 </style>
