@@ -4,7 +4,6 @@ import AppLogin from "./components/AppLogin.vue";
 import Nav from "./components/Nav.vue";
 import Friends from "./components/Friends.vue";
 
-
 Vue.use(VueRouter);
 const myRoutes: Array<RouteConfig> = [
   {

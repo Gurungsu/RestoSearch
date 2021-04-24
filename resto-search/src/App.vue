@@ -27,13 +27,14 @@
 
 import { Component, Vue } from "vue-property-decorator";
 import AppLogin from "./components/AppLogin.vue";
+import Nav from "./components/Nav.vue";
 import { FirebaseFirestore } from "@firebase/firestore-types";
 import { FirebaseAuth } from "@firebase/auth-types";
 
 
 @Component({
   components: {
-  
+  Nav,
     AppLogin,
   },
 })
